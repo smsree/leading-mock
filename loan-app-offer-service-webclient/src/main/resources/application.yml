@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: local
+restClient:
+  customerUrl: http://localhost:8080/v1/customer/mobile
+  LoanUrl: http://localhost:8081/v1/loan/customerMobile
+server:
+  port: 8082
