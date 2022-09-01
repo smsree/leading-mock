@@ -12,8 +12,8 @@ public class LoanService {
     @Autowired
     private LoanRepository loanRepository;
 
-    public Mono<Loan> addNewLoan(Loan loan){
-        return loanRepository.save(loan);
+    public Mono<Loan> addNewLoan(Loan educationalloan){
+        return loanRepository.save(educationalloan);
     }
 
     public Flux<Loan> getAllLoan() {
@@ -24,20 +24,24 @@ public class LoanService {
         return loanRepository.findById(loanId);
     }
 
-    public Mono<Loan> updateLoanById(String id,Loan updatedLoan) {
+    public Mono<Loan> updateLoanById(String id, Loan updatedEducationalloan) {
         Mono<Loan> availableLoan = loanRepository.findById(id);
         return availableLoan
-                .flatMap(loan -> {
-                    loan.setCustomerMobileNo(updatedLoan.getCustomerMobileNo());
-                    loan.setLoanName(updatedLoan.getLoanName());
-                    loan.setLoanamount(updatedLoan.getLoanamount());
-                    loan.setRateOfInterest(updatedLoan.getRateOfInterest());
-                    loan.setStatus(updatedLoan.getStatus());
-                    return loanRepository.save(loan);
+                .flatMap(educationalloan -> {
+                    educationalloan.setCustomerMobileNo(updatedEducationalloan.getCustomerMobileNo());
+                    educationalloan.setLoanName(updatedEducationalloan.getLoanName());
+                    educationalloan.setLoanamount(updatedEducationalloan.getLoanamount());
+                    educationalloan.setRateOfInterest(updatedEducationalloan.getRateOfInterest());
+                    educationalloan.setStatus(updatedEducationalloan.getStatus());
+                    return loanRepository.save(educationalloan);
                 });
     }
 
     public Mono<Void> deleteById(String id) {
         return loanRepository.deleteById(id);
+    }
+
+    public Flux<Loan> getAllLoanByMobileNo(Long mobileNo) {
+        return loanRepository.findLoanByCustomerMobileNo(mobileNo);
     }
 }
