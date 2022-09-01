@@ -42,13 +42,13 @@ class LoanControllerTest {
 
     @Test
     void addLoanMethodTest(){
-        Loan loan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
+        Loan educationalloan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
         when(loanService.addNewLoan(isA(Loan.class)))
-                .thenReturn(Mono.just(loan));
+                .thenReturn(Mono.just(educationalloan));
         webTestClient
                 .post()
                 .uri("/v1/loan/")
-                .bodyValue(loan)
+                .bodyValue(educationalloan)
                 .exchange()
                 .expectStatus()
                 .isCreated()
@@ -61,9 +61,9 @@ class LoanControllerTest {
 
     @Test
     void getAllLoanTest(){
-        Loan loan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
+        Loan educationalloan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
         when(loanService.getAllLoan())
-                .thenReturn(Flux.just(loan));
+                .thenReturn(Flux.just(educationalloan));
         Flux<Loan> responseBody = webTestClient
                 .get()
                 .uri("/v1/loan/all")
@@ -76,9 +76,9 @@ class LoanControllerTest {
     }
     @Test
     void getLoanById(){
-        Loan loan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
+        Loan educationalloan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
         when(loanService.getLoanById(isA(String.class)))
-                .thenReturn(Mono.just(loan));
+                .thenReturn(Mono.just(educationalloan));
         webTestClient
                 .get()
                 .uri("/v1/loan/id")
@@ -95,13 +95,13 @@ class LoanControllerTest {
     @Test
     void updateLoanTest(){
         String id="id";
-        Loan loan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
-        when(loanService.updateLoanById(id,loan))
-                .thenReturn(Mono.just(loan));
+        Loan educationalloan = new Loan("id", 123L, "mitra", 100, 2.3D, "applied");
+        when(loanService.updateLoanById(id, educationalloan))
+                .thenReturn(Mono.just(educationalloan));
         webTestClient
                 .put()
                 .uri("/v1/loan/id")
-                .bodyValue(loan)
+                .bodyValue(educationalloan)
                 .exchange()
                 .expectStatus()
                 .is2xxSuccessful()
