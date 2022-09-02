@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active: local
+restClient:
+  customerUrl: http://localhost:8080/v1/customer
+  businessUrl: http://localhost:8081/v1/businessLoan/customerMobileNo
+  educationalUrl: http://localhost:8081/v1/educationalLoan/customerMobileNo
+  housingUrl: http://localhost:8081/v1/housingLoan/customerMobileNo
+  vehicleUrl: http://localhost:8081/v1/vehicleLoan/customerMobileNo
+server:
+  port: 8082
